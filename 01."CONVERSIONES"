@@ -1,21 +1,63 @@
 #include <iostream>
 using namespace std;
+
 int main() {
     int num;
     cout << "Ingrese un número decimal: ";
-    cout <<"conversiones";
     cin >> num;
+    cout << "CONVERSIONES"<<endl;
     cout << "Decimal: " << num << endl;
-    int n = num;
-    string binario = "";
-    if (n == 0) binario = "0";
-    while (n > 0) {
-        binario = char((n % 2) + '0') + binario;
-        n /= 2;
+    int n = num;           
+    string binario = "";   
+
+    if (n == 0)
+        binario = "0";    
+    else {
+        while (n > 0) {
+            int resto = n % 2;        
+            binario = char(resto + '0') + binario;
+            n = n / 2;                 
+        }
     }
+
     cout << "Binario: " << binario << endl;
-    cout << "Octal: " << oct << num << endl;
-    cout << "Hexadecimal: " << uppercase << hex << num << endl;
+
+    n = num;
+    string octal = "";
+
+    if (n == 0)
+        octal = "0";
+    else {
+        while (n > 0) {
+            int resto = n % 8;            
+            octal = char(resto + '0') + octal;
+            n = n / 8;
+        }
+    }
+
+    cout << "Octal: " << octal << endl;
+
+    n = num;
+    string hexa = "";
+
+    if (n == 0)
+        hexa = "0";
+    else {
+        while (n > 0) {
+            int resto = n % 16;   
+            char digito;
+
+            if (resto < 10)
+                digito = resto + '0';
+            else
+                digito = (resto - 10) + 'A';
+
+            hexa = digito + hexa;
+            n = n / 16;
+        }
+    }
+
+    cout << "Hexadecimal: " << hexa << endl;
 
     return 0;
 }
